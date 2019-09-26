@@ -23,7 +23,7 @@ export function NasaImg() {
     return (
         <div style = {{margin: "50px auto", width: "50%", border: "1px solid black", padding: "20px", 
         backgroundColor: "teal", borderRadius: "10px"}}>
-            <img src = {nasa} style = {{width: "80%", margin: "10px auto", marginTop: "25px", borderRadius: "10px"}}/>
+            <img src = {nasa} style = {{width: "80%", margin: "10px auto", marginTop: "25px", borderRadius: "10px"}} alt = "The moon rising"/>
             <h2>{title}</h2>
             <p style = {{fontSize: "1.2rem"}}>{ex}</p>
         </div>
