@@ -1,13 +1,14 @@
 import React from "react";
 import "./App.css";
+import {NasaImg} from "./components/nasaImg"
 
 function App() {
+
   return (
     <div className="App">
-      <p>
-        Read through the instructions in the README.md file to build your NASA
-        app! Have fun 🚀!
-      </p>
+      <div>
+        <NasaImg />
+      </div>
     </div>
   );
 }
