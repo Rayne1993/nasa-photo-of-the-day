@@ -1,31 +1,52 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import styled from "styled-components";
 
+const NasaImg = styled.img`
+  width: 80%;
+  margin: 30px auto;
+  border-radius: 10px;
+`;
 
-export function NasaImg() {
+const H2 = styled.h2`
+    color: darkblue;
+`;
+
+const Date = styled.p`
+    color: black;
+    font-weight: bold;
+`;
+
+const Ex = styled.p`
+    padding: 0 20px 30px 20px;
+`;
+
+export default function NasaPic() {
     const [nasa, setNasa] = useState([]);
     const [ex, setEx] = useState("");
     const [title, setTitle] = useState("");
-
+    const [date, setDate] = useState("");
+    
     useEffect(() => {
         axios
-        .get("https://api.nasa.gov/planetary/apod?api_key=TRrENN2eqDf9uPVpoLIqvxVHKTJgmQiMUff7qGMl")
-        .then(res => {
-            console.log(res.data);
-            setNasa(res.data.url)
-            setEx(res.data.explanation)
-            setTitle(res.data.title)
-        })
-        .catch(err => {
-            console.log("Error", err);
-        })
+            .get("https://api.nasa.gov/planetary/apod?api_key=TRrENN2eqDf9uPVpoLIqvxVHKTJgmQiMUff7qGMl")
+            .then(res => {
+                console.log(res.data);
+                setNasa(res.data.url);
+                setEx(res.data.explanation);
+                setTitle(res.data.title);
+                setDate(res.data.date);
+            })
+            .catch(err => {
+                console.log(err);
+            });   
     }, []);
     return (
-        <div style = {{margin: "50px auto", width: "50%", border: "1px solid black", padding: "20px", 
-        backgroundColor: "teal", borderRadius: "10px"}}>
-            <img src = {nasa} style = {{width: "80%", margin: "10px auto", marginTop: "25px", borderRadius: "10px"}} alt = "The moon rising"/>
-            <h2>{title}</h2>
-            <p style = {{fontSize: "1.2rem"}}>{ex}</p>
+        <div>
+            <NasaImg src = {nasa} alt = "from NASA"/>
+            <H2>{title}</H2>
+            <Date>{date}</Date>
+            <Ex>{ex}</Ex>
         </div>
-    )
+    );
 }
