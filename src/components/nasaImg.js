@@ -9,7 +9,7 @@ const NasaImg = styled.img`
 `;
 
 const H2 = styled.h2`
-    color: darkblue;
+    color: lightblue;
 `;
 
 const Date = styled.p`
@@ -19,6 +19,7 @@ const Date = styled.p`
 
 const Ex = styled.p`
     padding: 0 20px 30px 20px;
+    color: white;
 `;
 
 export default function NasaPic() {
@@ -28,8 +29,7 @@ export default function NasaPic() {
     const [date, setDate] = useState("");
     
     useEffect(() => {
-        axios
-            .get("https://api.nasa.gov/planetary/apod?api_key=TRrENN2eqDf9uPVpoLIqvxVHKTJgmQiMUff7qGMl")
+        axios.get("https://api.nasa.gov/planetary/apod?api_key=TRrENN2eqDf9uPVpoLIqvxVHKTJgmQiMUff7qGMl")
             .then(res => {
                 console.log(res.data);
                 setNasa(res.data.url);
